@@ -10,6 +10,7 @@ You will be able to:
 
 * Compare the t-test and resulting p-value with Effect Size and describe both statistics and their applications
 
+
 ## Hypothesis testing using Frequentist methods
 
 In frequentist hypothesis testing, we construct a test statistic from the measured data, and use the value of that statistic to decide whether to accept or reject the hypothesis. 
@@ -145,29 +146,33 @@ Identify the pieces of information you’ll need to calculate the test statistic
 
 ```python
 # Read the sales data into NumPy array. Alternatively, you can also read this data into a Pandas dataframe
-sample = None
+sample = np.array([122.09, 100.64, 125.77, 120.32, 118.25,  96.47, 111.4 ,  80.66,
+       110.77, 111.14, 102.9 , 114.54,  88.09,  98.59,  87.07, 110.43,
+       101.9 , 123.89,  97.03, 116.23, 108.3 , 112.82, 119.57, 131.38,
+       128.39])
 
 # Population mean (μ)
-mu = None
+mu = 100 
 
 # Sample mean (x̄) using NumPy mean()
-x_bar= None
+x_bar= sample.mean()
 
 # Sample Stadrad Deviation (sigma) using Numpy
-sigma = None
+sigma = np.std(sample)
 
 # Sample size (n)
-n = None
+n = len(sample)
 
 # Degrees of Freedom
-df =None
+df = n-1
 
 # Difference in sample mean 
-diff =None
+diff = x_bar - mu
 
 
 # Print the findings
-
+print ('The sample contains', n, 'observations, having a mean of', x_bar, "and a standard deviation (sigma) = ", sigma, 
+       ", with", df, 'degrees of freedom. The difference between sample and population means is:', diff)
 
 # The sample contains 25 observations, having a mean of 109.5456 
 # and a standard deviation (sigma) =  13.069276668584225 , 
@@ -186,13 +191,15 @@ Let's also try drawing a distribution from example values to check for normality
 
 
 ```python
-# Plot the sample distribution
+sns.set(color_codes=True)
+sns.set(rc={'figure.figsize':(12,10)})
+sns.distplot(sample)
 ```
 
 
 
 
-    <matplotlib.axes._subplots.AxesSubplot at 0x1a1b4de4a8>
+    <matplotlib.axes._subplots.AxesSubplot at 0x20d242a6d68>
 
 
 
@@ -218,10 +225,17 @@ Where $S$ stands for standard deviation, which we already defined as 'sigma'.
 
 ```python
 # Calculate Sigma
-t = None
+t = (x_bar -  mu)/(sigma/np.sqrt(n))
 t
 # 3.6519236075802097
 ```
+
+
+
+
+    3.6519236075802097
+
+
 
 > Note that a positive t value indicates that the sample mean is greater than population mean and vice versa. This means that sample's average sales performnace post-training is greater than average population sales performance. 
 
@@ -232,29 +246,29 @@ Lets try visualizing the calculated t-statistic with a PDF.
 
 ```python
 # generate points on the x axis between -10 and 10:
-xs = None
+xs = np.linspace(-5, 5, 200)
+
 # use stats.t.pdf to get values on the probability density function for the t-distribution
 # the second argument is the degrees of freedom
-ys = None
+ys = stats.t.pdf(xs, df, 0, 1)
+
 # initialize a matplotlib "figure"
-fig = None
+fig = plt.figure(figsize=(8,5))
 
 # get the current "axis" out of the figure
-ax = None
+ax = fig.gca()
 
 # plot the lines using matplotlib's plot function:
+ax.plot(xs, ys, linewidth=3, color='darkblue')
 
 # plot a vertical line for our measured difference in rates t-statistic
+ax.axvline(t, color='red', linestyle='--', lw=5)
 
+plt.show()
 ```
 
 
-```python
-
-```
-
-
-![png](index_files/index_23_0.png)
+![png](index_files/index_22_0.png)
 
 
 ### Step 5: Find the critical t value. 
@@ -285,10 +299,17 @@ Ley's calculate the critical t using this formula and confirm our earlier findin
 
 ```python
 # Calculate critical t value
-t_crit = None
+t_crit = np.round(stats.t.ppf(1 - 0.05, df=24),3)
 t_crit
 # 1.711
 ```
+
+
+
+
+    1.711
+
+
 
 As we can see , the critical value returned from the function (rounded off 2 two decimal places) is same as one we found the in t-distribution table i.e. 1.711. 
 
@@ -319,18 +340,28 @@ We use a one-tailed t-test as we are looking for an increase in the sales perfor
 
 
 ```python
-results = None     
+results = stats.ttest_1samp(a= sample, popmean= mu)         
+print ("The t-value for sample is", round(results[0], 2), "and the p-value is", np.round((results[1]), 4))
 #  Print results
 # The t-value for sample is 3.58 and the p-value is 0.0015
 ```
 
-We can use our null and alternate hypothesis defined earlier to state the results from our findings using if-else conditions to reject Ho/Ha. 
+    The t-value for sample is 3.58 and the p-value is 0.0015
+
+
+We can use our null and alternate hypothesis defined earlier to state the results from our findings. 
 
 
 ```python
-# Null hypothesis rejected. Results are statistically significant with 
-# t-value = 3.58 and p-value = 0.0015
+if (results[0]>t_crit) and (results[1]<0.05):
+    print ("Null hypothesis rejected. Results are statistically significant with t-value =", 
+           round(results[0], 2), "and p-value =", np.round((results[1]), 4))
+else:
+    print ("Null hypothesis is Accepted")
 ```
+
+    Null hypothesis rejected. Results are statistically significant with t-value = 3.58 and p-value = 0.0015
+
 
 ## Effect Size Calculation for one-sample t-test
 
@@ -347,10 +378,17 @@ Lets calculate the Cohen'd for our sample using the formula above:
 
 ```python
 # Calculate Cohen's d and round off 
-d = None
+d = np.round(((diff) / sigma),2)
 d
 # 0.73
 ```
+
+
+
+
+    0.73
+
+
 
 
 Following cohen's interpretation, we can confidently say that the sample mean shifts considerably towards positive side as compared to the population means, resulting in a large effect size. This also help us conclude that training has a a clear effect on the sales performance of the sales team, when compared to pre-sales performance. 
@@ -365,22 +403,35 @@ Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will
 def one_sample_ttest(sample, popmean, alpha):
 
     # Visualize sample distribution for normality 
-
+    sns.set(color_codes=True)
+    sns.set(rc={'figure.figsize':(12,10)})
+    sns.distplot(sample)
     
-    # Population mean 
-
+    # Populaqtion mean 
+    mu = popmean
+    
     # Sample mean (x̄) using NumPy mean()
+    x_bar= sample.mean()
 
     # Sample Stadrad Deviation (sigma) using Numpy
+    sigma = np.std(sample)
     
     # Degrees of freedom
+    df = len(sample) - 1
     
     #Calculate the critical t-value
+    t_crit = stats.t.ppf(1 - alpha, df=df)
     
-    #Calculate the t-value and p-value      
+    #Calculate the t-value and p-value
+    results = stats.ttest_1samp(a= sample, popmean= mu)         
     
-    #return results
-    return None
+    if (results[0]>t_crit) and (results[1]<alpha):
+        print ("Null hypothesis rejected. Results are statistically significant with t-value =", 
+                round(results[0], 2), "critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+    else:
+        print ("Null hypothesis is True with t-value =", 
+                round(results[0], 2), ", critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+    
 ```
 
 ### Exercise 2:
@@ -398,32 +449,43 @@ The mean score of the class before the test is 65. The teacher thinks that the o
 1. Test to see if the sample mean is significantly different from 65 at the .05 level. Report the t and p values.
 2. The researcher realizes that she accidentally recorded the score that should have been 80.9 as 90.9. Are these corrected scores significantly different from 65 at the .05 level?
 
-### Solution 1:
+### Solution:
 
 
 ```python
-
+sample = np.array([84.0, 92.4, 74.3, 79.4, 86.7, 75.3, 90.9, 86.1, 81.0, 85.1, 
+      78.7, 73.5, 86.9, 87.4, 82.7, 81.9, 69.9, 77.2, 79.3, 83.3]
+)
+sample = sample
+popmean = 65
+alpha = 0.001
+one_sample_ttest(sample, popmean, alpha)
 ```
 
     Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 3.579400148163749 and p-value = 1e-10
 
 
 
-![png](index_files/index_40_1.png)
+![png](index_files/index_39_1.png)
 
-
-### Solution 2:
 
 
 ```python
-
+# With corrected values
+sample = np.array([84.0, 92.4, 74.3, 79.4, 86.7, 75.3, 80.9, 86.1, 81.0, 85.1, 
+      78.7, 73.5, 86.9, 87.4, 82.7, 81.9, 69.9, 77.2, 79.3, 83.3]
+)
+sample = sample
+popmean = 65
+alpha = 0.05
+one_sample_ttest(sample, popmean, alpha)
 ```
 
     Null hypothesis rejected. Results are statistically significant with t-value = 13.2 critical t-value = 1.729132811521367 and p-value = 1e-10
 
 
 
-![png](index_files/index_42_1.png)
+![png](index_files/index_40_1.png)
 
 
 ## Summary
