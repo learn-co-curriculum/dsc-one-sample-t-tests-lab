@@ -1,6 +1,7 @@
 
-# One Sample t-test
+# One Sample T-Test - Lab
 
+## Introduction
 Just as we previously used the t distribution to provide confidence intervals on estimating the population mean, we can also use similar methods to test whether two populations are different, statistically speaking. To do this, we can use a t-test.
 
 ## Objectives
