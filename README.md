@@ -91,11 +91,12 @@ Lets look at a sample analytical question and work through the process of calcul
 
 >** *"Acme Ltd. wants to improve sales performance. Past sales data indicate that the average sale was 100 dollars per transaction. After training the sales force, recent sales data (from a random sample of 25 salesmen) is shown below:"* **
 
-      [132.09, 110.64, 135.77, 130.32, 128.25, 
-       106.47, 121.4 ,  90.66, 120.77, 121.14, 
-       112.9 , 124.54,  98.09, 108.59,  97.07, 
-       120.43, 111.9 , 133.89, 107.03, 126.23, 
-       118.3 , 122.82, 129.57, 141.38, 138.39]
+       
+      [122.09, 100.64, 125.77, 120.32, 118.25,
+       96.47 , 111.4 ,  80.66, 110.77, 111.14, 
+       102.9 , 114.54,  88.09,  98.59,  87.07, 
+       110.43, 101.9 , 123.89,  97.03, 116.23, 
+       108.3 , 112.82, 119.57, 131.38, 128.39]
 
 > **Did the training work? Test your hypothesis at a 5% alpha level.**
 
@@ -140,6 +141,7 @@ import math
 # For visualizing distributions - optional 
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
 ```
 
 Identify the pieces of information you’ll need to calculate the test statistic as given above. The sample data should provide you with required values.
@@ -147,7 +149,7 @@ Identify the pieces of information you’ll need to calculate the test statistic
 
 ```python
 # Read the sales data into NumPy array. Alternatively, you can also read this data into a Pandas dataframe
-sample = None
+sample =  None
 
 # Population mean (μ)
 mu = None
@@ -176,9 +178,6 @@ diff =None
 # with 24 degrees of freedom. 
 # The difference between sample and population means is: 9.54
 ```
-
-    The sample contains 25 observations, having a mean of 109.5456 and a standard deviation (sigma) =  13.069276668584225 , with 24 degrees of freedom. The difference between sample and population means is: 9.545599999999993
-
 
 9.5 mean difference with a positive sign shows an increase in sample mean. 
 
@@ -222,7 +221,7 @@ Where $S$ stands for standard deviation, which we already defined as 'sigma'.
 # Calculate Sigma
 t = None
 t
-# 3.6519236075802097
+# 3.578139767278185
 ```
 
 > Note that a positive t value indicates that the sample mean is greater than population mean and vice versa. This means that sample's average sales performnace post-training is greater than average population sales performance. 
