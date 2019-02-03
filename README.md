@@ -232,7 +232,7 @@ Lets try visualizing the calculated t-statistic with a PDF.
 
 
 ```python
-# generate points on the x axis between -10 and 10:
+# generate points on the x axis between -5 and 5:
 xs = None
 # use stats.t.pdf to get values on the probability density function for the t-distribution
 # the second argument is the degrees of freedom
