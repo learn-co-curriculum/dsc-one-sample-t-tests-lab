@@ -198,7 +198,7 @@ Let's also try drawing a distribution from example values to check for normality
 
 
 
-![png](index_files/index_17_1.png)
+![png](index_files/index_5_1.png)
 
 
 At this point, we have some idea of difference between our sample and the population mean. To review, we have a null hypothesis that states there's no increase in sales performance, and an alternate hypothesis that states that there is an increase in sales performance - post training.
@@ -255,7 +255,7 @@ ax = None
 ```
 
 
-![png](index_files/index_23_0.png)
+![png](index_files/index_10_0.png)
 
 
 ### Step 5: Find the critical t value. 
@@ -410,7 +410,7 @@ The mean score of the class before the test is 65. The teacher thinks that the o
 
 
 
-![png](index_files/index_40_1.png)
+![png](index_files/index_23_1.png)
 
 
 ### Solution 2:
@@ -424,7 +424,7 @@ The mean score of the class before the test is 65. The teacher thinks that the o
 
 
 
-![png](index_files/index_42_1.png)
+![png](index_files/index_25_1.png)
 
 
 ## Summary
