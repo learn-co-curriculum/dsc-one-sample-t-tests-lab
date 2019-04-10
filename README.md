@@ -25,7 +25,7 @@ The test statistic is a lower dimensional summary of the data but still maintain
 The significance level, also denoted as alpha or `α`, is the probability of rejecting the null hypothesis when it is true. For example, a significance level of 0.05 indicates a 5% risk of concluding that a difference exists when there is no actual difference. Look at the following graphs for a better understanding: 
 
 
-<img src="P05.png" alt="drawing" width="500px"/>
+<img src="images/P05.png" alt="drawing" width="500px"/>
 In the graph above, the two shaded areas are equidistant from the null hypothesis value and each area has a probability of 0.025, for a total of 0.05. In statistics, we call these shaded areas the critical regions for a two-tailed test. If the population mean is 260, you’d expect to obtain a sample mean that falls in the critical region 5% of the time. The critical region defines how far away our sample statistic must be from the null hypothesis value before we can say it is unusual enough to reject the null hypothesis.
 
 Our sample mean (330.6) falls within the critical region, which indicates it is statistically significant at the 0.05 level.
@@ -33,7 +33,7 @@ Our sample mean (330.6) falls within the critical region, which indicates it is 
 You can also see if it is statistically significant using the other common significance level of 0.01.
 
 
-<img src="P01.png" alt="drawing" width="500px"/>
+<img src="images/P01.png" alt="drawing" width="500px"/>
 
 The two shaded areas each have a probability of 0.005, the two of which add up to a total probability of 0.01. This time the sample mean does not fall within the critical region, and you fail to reject the null hypothesis. This comparison shows why you need to choose your significance level before you begin your study. It protects you from choosing a significance level because it conveniently gives you significant results!
 
@@ -43,7 +43,7 @@ Using the graph, data scientists are able to determine that their results are st
 ### P values: 
 P values are the probability of obtaining an effect at least as extreme as the one in your sample data, assuming the truth of the null hypothesis. Let's look at the following graph for a better understanding.
 
-<img src="p.png" alt="drawing" width="500px"/>
+<img src="images/p.png" alt="drawing" width="500px"/>
 
 To graph the P value, you need to determine the distance between the sample mean and the null hypothesis value (330.6 - 260 = 70.6). Next, you can graph the probability of obtaining a sample mean that is at least as extreme in both tails of the distribution (260 +/- 70.6).
 
@@ -273,7 +273,7 @@ The **alpha level**: given as 5% in the question.
 
 **Degrees of freedom**, which is the number of items in the sample (n) minus 1: 25 – 1 = 24.
 
-![t-dist](t-dist.png)
+![t-dist](images/t-dist.png)
 
 You use a one-tailed t-test towards the positive (right side of the t-distribution) to identify an increase in the sales performance. 
 
@@ -297,7 +297,7 @@ As you can see , the critical value returned from the function (rounded off 2 tw
 
 Using the the [t-distribution calculator](http://www.statdistributions.com/t/), and providing the set p-value, t-value and identifying the type of t-test, we get the following graph:
 
-![t_graph](t_graph.png)
+![t_graph](images/t_graph.png)
 
 
 
