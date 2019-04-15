@@ -1,11 +1,18 @@
 
+# One Sample T-Test - Lab
 
-Following cohen's interpretation, one can confidently say that the sample mean shifts considerably towards the positive side as compared to the population mean, resulting in a large effect size. This also helps one conclude that training has a clear effect on the sales performance of the sales team when compared to pre-sales performance. 
+## Introduction
+Just as you previously used the t distribution to provide confidence intervals on estimating the population mean, you can also use similar methods to test whether two populations are different, statistically speaking. To do this, you can use a t-test.
+
+## Objectives
+You will be able to:
+
+* Perform a complete one sample t-test analysis and describe the results
 
 
 ### Exercise 1: 
 
-Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will take in a sample data(as the one given above),  the population mean and the alpha value to calculate and return the t-value, critical t-value and p-value for the sample and identify if the results are significant or not. 
+Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will take in a sample data, the population mean and the alpha value to calculate and print out the t-statistic, critical t-value and p-value for the sample and identify if the results are significant or not. The function should also create a visualization using seaborn of the distribution to check for normality.
 
 
 ```python
@@ -45,6 +52,11 @@ The mean score of the class before the test is 65. The teacher thinks that the o
 1. Test to see if the sample mean is significantly different from 65 at the .05 level. Report the t and p values.
 2. The researcher realizes that she accidentally recorded the score that should have been 80.9 as 90.9. Are these corrected scores significantly different from 65 at the .05 level?
 
+Bonus: What is the effect size of the first sample compared to the population? How can you interpret this effect size in relation to your significance test?
+
+
+### Solution:
+
 
 ```python
 
@@ -71,6 +83,4 @@ The mean score of the class before the test is 65. The teacher thinks that the o
 
 ## Summary
 
-In this lesson, you saw a quick introduction to hypothesis testing using frequentists methods with t-values and p-values. You saw how a one sample t-test can be applied to contexts where the population mean is unknown and you have a limited amount of sample data. You looked at all the stages required for such hypothesis testing with a description of steps and also, how to perform these functions in Python. The lesson also briefly explains the comparison of using p-value for statistical significance vs. effect sizes. 
-
-
+In this lab, you saw a quick introduction to hypothesis testing using frequentist methods with t-values and p-values. You saw how a one sample t-test can be applied to contexts where the population mean is unknown and you have a limited amount of sample data. You looked at all the stages required for such hypothesis testing with a description of steps and also, how to perform these functions in Python. The lesson also briefly explains the comparison of using p-value for statistical significance vs. effect sizes. 
