@@ -57,8 +57,6 @@ The mean score of the class before the test is 65. The teacher thinks that the o
 ![png](index_files/index_3_1.png)
 
 
-### Solution:
-
 
 ```python
 
@@ -68,7 +66,7 @@ The mean score of the class before the test is 65. The teacher thinks that the o
 
 
 
-![png](index_files/index_5_1.png)
+![png](index_files/index_4_1.png)
 
 
 ## Summary
