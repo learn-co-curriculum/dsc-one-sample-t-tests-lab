@@ -12,7 +12,7 @@ You will be able to:
 
 ### Exercise 1: 
 
-Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will take in a sample data, the population mean and the alpha value to calculate and print out the t-statistic, critical t-value and p-value for the sample and identify if the results are significant or not. The function should also create a visualization using seaborn of the distribution to check for normality.
+Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will take in sample data, the population mean and the alpha value to calculate and print out the t-statistic, critical t-value and p-value for the sample and identify if the results are significant or not. The function should also create a visualization using seaborn of the distribution to check for normality.
 
 
 ```python
@@ -25,15 +25,15 @@ def one_sample_ttest(sample, popmean, alpha):
 
     # Sample mean (x̄) using NumPy mean()
 
-    # Sample Stadrad Deviation (sigma) using Numpy
+    # Sample Standard Deviation (sigma) using Numpy
     
     # Degrees of freedom
     
-    #Calculate the critical t-value
+    # Calculate the critical t-value
     
-    #Calculate the t-value and p-value      
+    # Calculate the t-value and p-value      
     
-    #return results
+    # return results
     return None
 ```
 
@@ -62,15 +62,20 @@ Bonus: What is the effect size of the first sample compared to the population? H
 
 ```
 
-    Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 3.579400148163749 and p-value = 1e-10
+    Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 1.729132811521367 and p-value = 1e-10
+
+
+    /Users/forest.polchow/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
 
 
 
-![png](index_files/index_3_1.png)
+![png](index_files/index_3_2.png)
 
 
 
 ```python
+
 
 ```
 
