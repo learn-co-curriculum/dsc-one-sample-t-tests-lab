@@ -12,7 +12,7 @@ You will be able to:
 
 ### Exercise 1: 
 
-Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will take in sample data, the population mean and the alpha value to calculate and print out the t-statistic, critical t-value and p-value for the sample and identify if the results are significant or not. The function should also create a visualization using seaborn of the distribution to check for normality.
+Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will take in sample data (an array of observations), the population mean and the alpha value to calculate and print out the t-statistic, critical t-value and p-value for the sample and identify if the results are significant or not. The function should also create a visualization using seaborn of the distribution to check for normality.
 
 
 ```python
