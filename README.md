@@ -37,6 +37,46 @@ def one_sample_ttest(sample, popmean, alpha):
     return None
 ```
 
+
+```python
+# __SOLUTION__ 
+from scipy import stats
+import numpy as np
+import seaborn as sns
+def one_sample_ttest(sample, popmean, alpha):
+
+    # Visualize sample distribution for normality 
+    sns.set(color_codes=True)
+    sns.set(rc={'figure.figsize':(12,10)})
+    sns.distplot(sample)
+    
+    # Population mean 
+    mu = popmean
+    
+    # Sample mean (x̄) using NumPy mean()
+    x_bar= sample.mean()
+
+    # Sample Standard Deviation (sigma) using Numpy
+    sigma = np.std(sample)
+    
+    # Degrees of freedom
+    df = len(sample) - 1
+    
+    #Calculate the critical t-value
+    t_crit = stats.t.ppf(1 - alpha, df=df)
+    
+    #Calculate the t-value and p-value
+    results = stats.ttest_1samp(a= sample, popmean= mu)         
+    
+    if (results[0]>t_crit) and (results[1]<alpha):
+        print ("Null hypothesis rejected. Results are statistically significant with t-value =", 
+                round(results[0], 2), "critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+    else:
+        print ("Null hypothesis is True with t-value =", 
+                round(results[0], 2), ", critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+    
+```
+
 ### Exercise 2:
 
 Use the function created in exercise 1 to answer the following analytical questions.
@@ -70,7 +110,7 @@ Bonus: What is the effect size of the first sample compared to the population? H
 
 
 
-![png](index_files/index_3_2.png)
+![png](index_files/index_4_2.png)
 
 
 
@@ -83,7 +123,53 @@ Bonus: What is the effect size of the first sample compared to the population? H
 
 
 
-![png](index_files/index_4_1.png)
+![png](index_files/index_5_1.png)
+
+
+
+```python
+# __SOLUTION__ 
+sample = np.array([84.0, 92.4, 74.3, 79.4, 86.7, 75.3, 90.9, 86.1, 81.0, 85.1, 
+      78.7, 73.5, 86.9, 87.4, 82.7, 81.9, 69.9, 77.2, 79.3, 83.3] )
+
+popmean = 65
+alpha = 0.05
+one_sample_ttest(sample, popmean, alpha)
+```
+
+    Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 1.729132811521367 and p-value = 1e-10
+
+
+    /Users/forest.polchow/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
+
+
+
+![png](index_files/index_6_2.png)
+
+
+
+```python
+# __SOLUTION__ 
+# With corrected values
+sample1 = np.array([84.0, 92.4, 74.3, 79.4, 86.7, 75.3, 80.9, 86.1, 81.0, 85.1, 
+      78.7, 73.5, 86.9, 87.4, 82.7, 81.9, 69.9, 77.2, 79.3, 83.3]
+)
+
+popmean = 65
+alpha = 0.05
+one_sample_ttest(sample1, popmean, alpha)
+```
+
+    Null hypothesis rejected. Results are statistically significant with t-value = 13.2 critical t-value = 1.729132811521367 and p-value = 1e-10
+
+
+    /Users/forest.polchow/anaconda3/lib/python3.6/site-packages/matplotlib/axes/_axes.py:6462: UserWarning: The 'normed' kwarg is deprecated, and has been replaced by the 'density' kwarg.
+      warnings.warn("The 'normed' kwarg is deprecated, and has been "
+
+
+
+![png](index_files/index_7_2.png)
 
 
 ## Summary
