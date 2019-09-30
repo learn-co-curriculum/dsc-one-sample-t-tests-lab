@@ -119,6 +119,13 @@ alpha = 0.05
 one_sample_ttest(sample, popmean, alpha)
 ```
 
+    Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 1.729132811521367 and p-value = 1e-10
+
+
+
+![png](index_files/index_6_1.png)
+
+
 
 ```python
 # __SOLUTION__ 
@@ -131,6 +138,13 @@ popmean = 65
 alpha = 0.05
 one_sample_ttest(sample1, popmean, alpha)
 ```
+
+    Null hypothesis rejected. Results are statistically significant with t-value = 13.2 critical t-value = 1.729132811521367 and p-value = 1e-10
+
+
+
+![png](index_files/index_7_1.png)
+
 
 ## Summary
 
