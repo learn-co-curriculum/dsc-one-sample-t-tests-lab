@@ -7,12 +7,11 @@ Just as you previously used the t-distribution to provide confidence intervals f
 ## Objectives
 You will be able to:
 
-* Perform a complete one sample t-test analysis and describe the results
-
+* Perform a one sample t-test and make conclusions about an experiment based on the results
 
 ### Exercise 1: 
 
-Create a function in python `one_sample_ttest(sample, popmean, alpha)` that will take in sample data (an array of observations), the population mean and the alpha value to calculate and print out the t-statistic, critical t-value, and p-value for the sample and identify if the results are significant or not. The function should also create a visualization using seaborn of the distribution to check for normality.
+Create a function in Python `one_sample_ttest(sample, popmean, alpha)` that will take in sample data (an array of observations), the population mean and the alpha value to calculate and print out the t-statistic, critical t-value, and p-value for the sample and identify if the results are significant or not. The function should also create a visualization using `seaborn` of the distribution to check for normality.
 
 
 ```python
@@ -79,7 +78,7 @@ def one_sample_ttest(sample, popmean, alpha):
 
 ### Exercise 2:
 
-Use the function created in exercise 1 to answer the following analytical questions.
+Use the function created in Exercise 1 to answer the following analytical questions.
 
 In a Python class, some of the students have taken online courses to improve their Python skills.
 The scores of a random sample of 20 students who underwent the online-course on a Python test are as follows: 
