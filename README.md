@@ -18,6 +18,7 @@ Create a function in Python `one_sample_ttest(sample, popmean, alpha)` that will
 from scipy import stats
 import numpy as np
 import seaborn as sns
+
 def one_sample_ttest(sample, popmean, alpha):
 
     # Visualize sample distribution for normality 
@@ -41,14 +42,16 @@ def one_sample_ttest(sample, popmean, alpha):
     t_crit = stats.t.ppf(1 - alpha, df=df)
     
     #Calculate the t-value and p-value
-    results = stats.ttest_1samp(a= sample, popmean= mu)         
+    n = len(sample)
+    t = (x_bar-mu)/(sigma/n**.5)
+    p = stats.t.sf(t, df)        
     
-    if (results[0]>t_crit) and (results[1]<alpha):
+    if (t>t_crit) and (p<alpha):
         print ("Null hypothesis rejected. Results are statistically significant with t-value =", 
-                round(results[0], 2), "critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+                round(t, 2), "critical t-value =", t_crit, "and p-value =", np.round(p, 11))
     else:
         print ("Null hypothesis is True with t-value =", 
-                round(results[0], 2), ", critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+                round(t, 2), ", critical t-value =", t_crit, "and p-value =", np.round(p, 11))
     
 ```
 
@@ -82,7 +85,7 @@ alpha = 0.05
 one_sample_ttest(sample, popmean, alpha)
 ```
 
-    Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 1.729132811521367 and p-value = 1e-10
+    Null hypothesis rejected. Results are statistically significant with t-value = 13.02 critical t-value = 1.729132811521367 and p-value = 3e-11
 
 
 
@@ -101,7 +104,7 @@ alpha = 0.05
 one_sample_ttest(sample1, popmean, alpha)
 ```
 
-    Null hypothesis rejected. Results are statistically significant with t-value = 13.2 critical t-value = 1.729132811521367 and p-value = 1e-10
+    Null hypothesis rejected. Results are statistically significant with t-value = 13.55 critical t-value = 1.729132811521367 and p-value = 2e-11
 
 
 
