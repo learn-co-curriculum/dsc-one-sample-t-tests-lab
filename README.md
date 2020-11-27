@@ -43,12 +43,12 @@ def one_sample_ttest(sample, popmean, alpha):
     #Calculate the t-value and p-value
     results = stats.ttest_1samp(a= sample, popmean= mu)         
     
-    if (results[0]>t_crit) and (results[1]<alpha):
+    if (results[0]>t_crit) and (results[1]/2<alpha):
         print ("Null hypothesis rejected. Results are statistically significant with t-value =", 
-                round(results[0], 2), "critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+                round(results[0], 2), "critical t-value =", t_crit, "and p-value =", np.round((results[1]/2), 11))
     else:
         print ("Null hypothesis is True with t-value =", 
-                round(results[0], 2), ", critical t-value =", t_crit, "and p-value =", np.round((results[1]), 10))
+                round(results[0], 2), "critical t-value =", t_crit, "and p-value =", np.round((results[1]/2), 11))
     
 ```
 
@@ -82,7 +82,7 @@ alpha = 0.05
 one_sample_ttest(sample, popmean, alpha)
 ```
 
-    Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 1.729132811521367 and p-value = 1e-10
+    Null hypothesis rejected. Results are statistically significant with t-value = 12.69 critical t-value = 1.729132811521367 and p-value = 5e-11
 
 
 
@@ -101,7 +101,7 @@ alpha = 0.05
 one_sample_ttest(sample1, popmean, alpha)
 ```
 
-    Null hypothesis rejected. Results are statistically significant with t-value = 13.2 critical t-value = 1.729132811521367 and p-value = 1e-10
+    Null hypothesis rejected. Results are statistically significant with t-value = 13.2 critical t-value = 1.729132811521367 and p-value = 3e-11
 
 
 
