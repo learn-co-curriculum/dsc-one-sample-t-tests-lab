@@ -1,4 +1,3 @@
-
 # One Sample T-Test - Lab
 
 ## Introduction
