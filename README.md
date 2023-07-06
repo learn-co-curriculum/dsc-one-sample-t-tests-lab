@@ -1,4 +1,3 @@
-
 # One Sample T-Test - Lab
 
 ## Introduction
@@ -47,7 +46,7 @@ def one_sample_ttest(sample, popmean, alpha):
     # Visualize sample distribution for normality 
     sns.set(color_codes=True)
     sns.set(rc={'figure.figsize':(12,10)})
-    sns.distplot(sample)
+    sns.histplot(sample, kde=True)
     
     # Population mean 
     mu = popmean
@@ -122,7 +121,9 @@ one_sample_ttest(sample, popmean, alpha)
 
 
 
+    
 ![png](index_files/index_6_1.png)
+    
 
 
 
@@ -142,7 +143,9 @@ one_sample_ttest(sample1, popmean, alpha)
 
 
 
+    
 ![png](index_files/index_7_1.png)
+    
 
 
 ## Summary
